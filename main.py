@@ -58,9 +58,23 @@ def main():
     print(totalPages)
 
     number = 0
-    for i in range(0,totalPages, 2):
+    units = 1
+    lesson = 1
+    for i in range(7,totalPages, 2):
+
+        if lesson > 5:
+            lesson = 1
+            units = units + 1
+
+        base_name =os.path.basename(pdf)
+
         print('{} of {}'.format(number, int(totalPages/2)))
-        name = 'output_' + str(number) + '.pdf'
+
+        base_name = os.path.splitext(base_name)[0]
+
+        name = '{}_unit_{}_point_{}.pdf'.format(base_name,units,lesson)          #  base_name + '_' +  '' + '.pdf'
+
+        lesson = lesson + 1
         splits = list()
         splits.append(i)     
         splits.append(i+1)
