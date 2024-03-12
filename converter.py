@@ -29,12 +29,13 @@ def PDFsplit(pdf, initial_page ,final_page, output, name):
         exit()
   # creating input pdf file object
     splits = []
-    for i in range(initial_page, final_page):
+    for i in range(initial_page -1, final_page):
         splits.append(i)
 
     
     pdf_file_path = pdf
     file_base_name = output
+    name = name + ".pdf"
 
     pdf = PdfReader(pdf_file_path)
     pages = splits #[0, 2, 4] # page 1, 3, 5
