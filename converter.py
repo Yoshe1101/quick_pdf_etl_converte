@@ -24,8 +24,15 @@ def output_folder():
 
     return file_path
 
-def PDFsplit(pdf, splits, output, name):
+def PDFsplit(pdf, initial_page ,final_page, output, name):
+    if pdf == '':
+        exit()
   # creating input pdf file object
+    splits = []
+    for i in range(initial_page, final_page):
+        splits.append(i)
+
+    
     pdf_file_path = pdf
     file_base_name = output
 
@@ -43,11 +50,11 @@ def PDFsplit(pdf, splits, output, name):
     # closing the input pdf file object
     #pdfFileObj.close()
 
-def main():
+def main(file_path ,initial_page ,final_page, output_folder, output_name):
 
 
-    pdf = get_path()
-    output = output_folder()
+    pdf = file_path #get_path()
+    output = output_name #output_folder()
 
 
     # store data in pdfReader
@@ -73,7 +80,7 @@ def main():
         base_name = os.path.splitext(base_name)[0]
 
         name = '{}_unit_{}_point_{}.pdf'.format(base_name,units,lesson)          #  base_name + '_' +  '' + '.pdf'
-
+        output = output + "/"
         lesson = lesson + 1
         splits = list()
         splits.append(i)     
@@ -82,5 +89,5 @@ def main():
         number = number + 1
 
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+#    main()
