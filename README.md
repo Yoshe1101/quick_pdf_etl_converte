@@ -15,7 +15,6 @@ to run the script: python main.py
 
 
 pyinstaller --name 'ETL_PDF_SPLITTER' \
-            --icon 'yo.ico' \
             --windowed  \
             --add-data='./converter.py:.' \
             ui.py

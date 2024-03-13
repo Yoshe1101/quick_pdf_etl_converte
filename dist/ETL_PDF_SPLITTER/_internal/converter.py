@@ -25,8 +25,8 @@ def output_folder():
     return file_path
 
 def PDFsplit(pdf, initial_page ,final_page, output, name):
-    if pdf == '':
-        exit()
+    initial_page = int(initial_page)
+    final_page = int(final_page)
   # creating input pdf file object
     splits = []
     for i in range(initial_page -1, final_page):
