@@ -14,7 +14,8 @@ to run the script: python main.py
 
 
 
-pyinstaller --name 'ETL_PDF_SPLITTER' \
+pyinstaller --name 'ETL_PDF_SPLITTER_V.1.0.3' \
+            --distpath ../MAC/realease/opt/bk/dist \
             --windowed  \
             --add-data='./converter.py:.' \
             ui.py
