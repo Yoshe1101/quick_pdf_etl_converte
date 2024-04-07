@@ -3,6 +3,7 @@ from tkinter import filedialog
 import os
 import PyPDF2
 from PyPDF2 import PdfReader, PdfWriter
+from Crypto.Cipher import AES
 
 
 def get_path():
@@ -25,8 +26,9 @@ def output_folder():
     return file_path
 
 def PDFsplit(pdf, initial_page ,final_page, output, name):
-    if pdf == '':
-        exit()
+    print(initial_page)
+    initial_page = int(initial_page)
+    final_page = int(final_page)
   # creating input pdf file object
     splits = []
     for i in range(initial_page -1, final_page):
@@ -43,6 +45,12 @@ def PDFsplit(pdf, initial_page ,final_page, output, name):
 
     for page_num in pages:
         pdfWriter.add_page(pdf.pages[page_num])
+
+    if not os.path.exists(os.path.join(output)): 
+      
+    # if the demo_folder directory is not present  
+    # then create it.
+        os.makedirs(os.path.join(output))
 
     with open(os.path.join(output, name), 'wb') as f:
         pdfWriter.write(f)
